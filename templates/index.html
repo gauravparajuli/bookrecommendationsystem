@@ -4,5 +4,23 @@ Trending Books (Top50)
 {% endblock %}
 
 {% block content %}
-<h1>Trending Top 50 Books</h1>
+<div class="row mt-2">
+    <div class="col-md-12">
+        <h1>Trending Top 50 Books</h1>
+    </div>
+    {% for i in range(author|length) %}
+        <div class="col-md-3 mb-2">
+            <div class="card">
+                <img src="{{image[i]}}" class="card-img-top" alt="{{title[i]}}">
+                <div class="card-body">
+                <h5>{{title[i]}}</h5>
+                <p>{{author[i]}}</p>
+                <p>Votes ({{vote[i]}})</p>
+                <p>Rating ({{rating[i]}})</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
