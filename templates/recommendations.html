@@ -6,27 +6,27 @@ Get Recommendations
 {% block content %}
 <div class="row mt-2">
     <h1>Get Book Recommendations</h1>
-    <form>
+    <form method="POST">
         <div class="mb-3">
           <label for="Book Name" class="form-label">Which book do you like?</label>
-          <input type="text" class="form-control" id="bookname" required placeholder="Enter a name of book that you like">
+          <input type="text" class="form-control" id="bookname" name="bookname" value="{{bookname}}" required placeholder="Enter a name of book that you like">
         </div>
         <button type="submit" class="btn btn-primary">Get Recommendations</button>
       </form>
-
-    {% for i in range(author|length) %}
-        <div class="col-md-3 mb-2">
+    
+    {% if data %}
+    {% for i in range(data|length) %}
+        <div class="col-md-3 mb-2 mt-2">
             <div class="card">
-                <img src="{{image[i]}}" class="card-img-top" alt="{{title[i]}}">
+                <img src="{{data[i][2]}}" class="card-img-top" alt="{{data[i][0]}}">
                 <div class="card-body">
-                <h5>{{title[i]}}</h5>
-                <p>{{author[i]}}</p>
-                <p>Votes ({{vote[i]}})</p>
-                <p>Rating ({{rating[i]}})</p>
+                <h5>{{data[i][0]}}</h5>
+                <p>{{data[i][1]}}</p>
                 </div>
             </div>
         </div>
     {% endfor %}
+    {% endif %}
 </div>
 
 {% endblock %}
